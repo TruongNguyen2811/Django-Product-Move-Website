@@ -1,0 +1,152 @@
+{% extends 'factory/main.html' %}
+{%block content%}
+
+<div class="row">
+    
+    <div class="col-md" style="height:80%">
+        <div class="card card-body text-center h-100" style="background-color: #A2E1DB;">
+            <h5>Factory Information: {{factory.FactoryName}}</h5>
+            <hr>
+            <p>Address: {{factory.FactoryAddress}}</p>
+            <p>Phone Number: {{factory.FactoryPhone}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #ABDEE6;">
+            <a href="{% url 'factorymain'%}" class="link-dark">
+                <h5 class="card-title">Total Products</h5>
+            </a>
+            <hr>
+            <h5 class="card-title">{{total_product}}</h5>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #FFC8A2;">
+            <a href="{% url 'factoryWarranty' factory.idFactory%}" class="link-dark">
+                <h5>Warranty Products:</h5>
+            </a>
+            <hr>
+            <h5>{{total_warranty}}</h5>
+        </div>
+    </div>
+    
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #FFAEA5;">
+            <a href="{% url 'factoryReCallProduct' factory.idFactory%}" class="link-dark">
+                <h5 class="card-title">Total Products Recall</h5>
+            </a>
+            <hr>
+            <h5 class="card-title">{{total_recall}}</h5>
+        </div>
+    </div>
+
+</div>
+<br>
+{% comment %} <div class="row">
+    <div class="col_md">
+        <div class="card card-body">
+            <form action="" method="GET">
+                {{myfilter1.form}}
+                {{myfilter2.form}}
+                <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></button>
+            </form>
+        </div>
+    </div>
+</div>
+<br> {% endcomment %}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body text-center">
+            <h5>Product In Store: {{total_onsale}}</h5>
+        </div>
+        <div class="card card-body text-center">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Line</th>                   
+                    <th>Date Move To Store</th>
+                    <th>Store Ware House</th>
+                    <th></th>
+                </tr>
+                {% for i in onsale %}
+                <tr>
+                    <td>
+                        {{i.idProduct}}
+                    </td>
+                    <td>
+                        {{i.idProduct.ProductName}}
+                    </td>
+                    <td>
+                        {{i.idProduct.ProductLine}}
+                    </td>
+                    <td>
+                        {{i.ReceivedDate}}
+                    </td>
+                    <td>
+                        {{i.StoreWareHouse}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body text-center">
+            <form action="" method="GET" >
+                {{myfilter1.form}}
+                {{myfilter2.form}}
+                <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></button>
+            </form>
+            <hr>
+            <h5>Product New:</h5>
+            <a href=" {% url 'CreateProducts' factory.idFactory %}" class="btn btn-outline-secondary btn-sm btn-block">Add New Product</a>
+        </div>
+        <div class="card card-body text-center">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Line</th>                   
+                    <th>Date Of Manufacture</th>
+                    <th>Ware House</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                {% for i in produces %}
+                <tr>
+                    <td>
+                        {{i.idProduct}}
+                    </td>
+                    <td>
+                        {{i.idProduct.ProductName}}
+                    </td>
+                    <td>
+                        {{i.idProduct.ProductLine}}
+                    </td>
+                    <td>
+                        {{i.DateOfManuFacture}}
+                    </td>
+                    <td>
+                        {{i.WareHouse}}
+                    </td>
+                    <td>
+                        {{i.idProduct.Describe}}
+                    </td>
+                    <td>
+                        <a href="{% url 'updateStatus' factory.idFactory i.idProduct%}" class="btn btn-success btn-sm btn-block"> Move To Store</a>
+                        {% comment %} <a href="" class="btn btn-danger btn-sm btn-block">Delete</a> {% endcomment %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

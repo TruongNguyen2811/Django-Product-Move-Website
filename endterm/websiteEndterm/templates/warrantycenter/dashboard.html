@@ -1,0 +1,122 @@
+{% extends 'warrantycenter/main.html' %}
+{%block content%}
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body" style="background-color: #ABDEE6;">
+            <a href="{% url 'MoveBackProduct' warrantycenter.idWarrantyCenter %}" class="link-dark">
+                <h5>Products Move Back to Factory:</h5>
+            </a>
+            <hr>
+            <h5>{{total_move}}</h5>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body" style="background-color: #A2E1DB;">
+            <a href="{% url 'WarrantyDashboard' %}" class="link-dark">
+                <h5>Warranty Center Information: {{warrantycenter.WarrantyCenterName}}</h5>
+            </a>
+            <hr>
+            <p>Address: {{warrantycenter.WarrantyCenterAddress}}</p>
+            <p>Phone Number: {{warrantycenter.WarrantyCenterPhone}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body " style="background-color: #D4F0F0;">
+            <a href="{% url 'AllWarrantyProduct' warrantycenter.idWarrantyCenter%}" class="link-dark">
+                <h5 class="card-title">Total Warrant Products</h5>
+            </a>
+            <hr>
+            <h5 class="card-title">{{total_warrantys}}</h5>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<div class="row">
+    <div class="col-md-5">
+        <div class="card card-body">
+            <form action="" method="GET" >
+                {{myfilter1.form}}
+                <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></button>
+            </form>
+            <hr>
+            <h5>All Clients</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Client Name</th>
+                    <th>Phone Number</th>                   
+                    <th></th>
+                </tr>
+                {% for i in client %}
+                <tr>
+                    <td>
+                        {{i.idClient}}
+                    </td>
+                    <td>
+                        {{i.ClientName}}
+                    </td>
+                    <td>
+                        {{i.PhoneNumber}}
+                    </td>
+                    <td>
+                        <a href="{% url 'ClientsDetail' warrantycenter.idWarrantyCenter i.idClient %}" class="btn btn-success btn-sm btn-block"> Details</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card card-body">
+            <form action="" method="GET" >
+                {{myfilter2.form}}
+                <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></button>
+            </form>
+            <hr>
+            <h5>Warranting Product: {{total_product}} </h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Line</th>                   
+                    <th>Warranty Date</th>
+                    <th></th>
+                </tr>
+                {% for i in Product %}
+                <tr>
+                    <td>
+                        {{i.idProduct}}
+                    </td>
+                    <td>
+                        {{i.idProduct.ProductName}}
+                    </td>
+                    <td>
+                        {{i.idProduct.ProductLine}}
+                    </td>
+                    <td>
+                        {{i.WarrantyDate}}
+                    </td>
+                    <td>
+                        <a href="{% url 'UpdateDoneInProduct' warrantycenter.idWarrantyCenter i.idProduct %}" class="btn btn-success btn-sm btn-block"> Done</a>
+                        <a href="{% url 'UpdateDoneInProduct' warrantycenter.idWarrantyCenter i.idProduct %}" class="btn btn-danger btn-sm btn-block">Move Back</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

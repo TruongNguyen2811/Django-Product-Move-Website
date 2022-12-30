@@ -1,0 +1,27 @@
+{%extends 'factory/main.html'%}
+{%block content%}
+<div class="row" style="width:50%; margin-left:auto; margin-right:auto">
+    <div class="col_md-6">
+        <h5>Welcome to Apple</h5>
+        <div class="card card-body">
+            <form action="" method="POST">
+                <div class="row">
+                    <div class="col_md">
+                        <div class="card card-body">
+                            {% csrf_token %}
+                            {% for fields in form %}
+                            {{fields.label}}
+                            {{fields}}
+                            {% endfor %}
+
+                            {{form.errors}}
+                        </div>
+                    </div>
+                </div>
+               <button class="btn btn-sm btn-outline-secondary">Send</button></a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%} 

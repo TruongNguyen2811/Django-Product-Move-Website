@@ -1,0 +1,22 @@
+{%extends 'store/main.html'%}
+{%block content%}
+<div class="row" style="width:50%; margin-left:auto; margin-right:auto">
+    <div class="col_md-6">
+        <h5>Store: {{store.StoreName}}</h5>
+        <div class="card card-body">
+            <form action="" method="POST">
+                <div class="row">
+                    <div class="col_md">
+                        <div class="card card-body">
+                            {% csrf_token %}
+                            {{NewClientForm }}
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" Name="submit" content="create">
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%} 

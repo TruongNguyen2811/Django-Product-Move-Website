@@ -1,0 +1,69 @@
+{% extends 'admin/main.html' %}
+{%block content%}
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #ABDEE6;">
+            <a href="{% url 'AllFactory' %}" class="link-dark">
+                <h5>Total Factorys</h5>
+            </a>
+            <hr>
+            <h5>{{total_factorys}}</h5>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #A2E1DB;">
+            <a href="{% url 'AllStores' %}" class="link-dark">
+                <h5>Total Stores </h5>
+            </a>
+            <hr>
+            <h5>{{total_stores}}</h5>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #D4F0F0;">
+            <a href="{% url 'AllWarrantyCenter' %}" class="link-dark">
+                <h5 class="card-title">Total Warranty Centers</h5>
+            </a>
+            <hr>
+            <h5 class="card-title">{{total_warrantyCenters}}</h5>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #ABDEE6;">
+            <a href="{% url 'AllProduct' %}" class="link-dark">
+                <h5>Total Products</h5>
+            </a>
+            <hr>
+            <h5>{{total_products}}</h5>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #B6CFB6;">
+            <a href="{% url 'AllStores' %}" class="link-dark">
+                <h5>Total Solds </h5>
+            </a>
+            <hr>
+            <h5>{{total_sold}}</h5>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body text-center h-100" style="background-color: #FF968A;">
+            <a href="{% url 'AllWarrantyCenter' %}" class="link-dark">
+                <h5 class="card-title">Total Warranties</h5>
+            </a>
+            <hr>
+            <h5 class="card-title">{{total_warrantys}}</h5>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
