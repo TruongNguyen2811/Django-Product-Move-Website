@@ -1,7 +1,7 @@
 # Django-Product-Move-Website
  Hướng dẫn cài đặt
 + B1: cài đặt môi trường python
-+B2 : cài đặt Django bằng pip install Django trong commandline 
++ B2 : cài đặt Django bằng pip install Django trong commandline 
 +B3 : tạo 1 CSDL MySQL tên manageapple
 B4: vào file setting.py trong phần DATABASE
  + chỉnh lại các trường password
